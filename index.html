@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="shortcut icon" href="src/icons/favicon1.ico" type="image/x-icon">
+<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+<title>Piskel-clone</title>
+</head>
+<body>
+    <header class="header">
+        <img id="imgHeader1" src="src/icons/Shape.png" alt="Shape.png">
+        <h1>Piskel-clone by slava-ff</h1>
+        <button id="logIn">Log In</button>
+        <div id="userInfo"><img id="userImg"><span id="userName"></span></div>
+        <button id="logOut">Log Out</button>
+    </header>
+    <main>
+        <section id="landingPage">
+            <div class="landing" id="create">
+              <img id="animation1" src="src/landing/animation0.apng" alt="animation0.apng">
+              <button id="start">Start</button>
+            </div>
+            <div class="landing" id="screenshot">
+                <img id="screen" src="src/landing/screen.jpg" alt="screen.jpg">
+            </div>
+            <div class="landing" id="examples">
+                <div class="box2">
+                  <div id="examplesText"><h3>Examples</h3>Created with this app</div>
+                  <div class="box3">
+                    <img id="ex1" class="example" src="src/landing/animation1.apng" alt="animation1.apng">
+                    <img id="ex2" class="example margin2" src="src/landing/animation4.apng" alt="animation4.apng">
+                    <img id="ex3" class="example margin2" src="src/landing/animation2.apng" alt="animation2.apng">
+                  </div>
+                </div>
+            </div>
+            <div class="landing" id="functionaily">
+                <ul><h3>Functionaily</h3></ul>
+                <li><b>Tools:</b> pen, stroke, rectangle, eraser, color picker, paint canvas, colorswap, "rainbow", lighten/darken, two colors selecting (left/right mouse click painting).</li>
+                <li><b>Transform canvas:</b> vertical/horizontal mirroring, right/left rotation, scaling.</li>
+                <li><b>Frame management:</b> add, delete, clone, activate any of them.</li>
+                <li><b>Preview:</b> animation preview playing 1-24 fps, fullscreen mode.</li>
+                <li><b>Export:</b> to filesystem as .apng and .gif, to Google Drive as .apng</li>
+                <li><b>Log In:</b> via google account</li>
+                <li>Show cursor coordinates</li>
+            </div>
+            <div class="landing" id="author">
+              <div class="box">
+                <div>by Sviatoslav Fomin:</div>
+                <div class="box3">
+                  <a href="https://github.com/slava-ff" target="_blank" class="contacLink">
+                    <img src="src/landing/logo-github.svg" alt="github-logo" class="contactsLogo">
+                    <span class="mail_info">github.com/slava-ff</span>
+                  </a>
+                  <a href="https://t.me/Slava_ff" target="_blank" class="contacLink margin">
+                    <img src="src/landing/logo-telegram.svg" alt="telegram-logo" class="contactsLogo">
+                    <span class="mail_info">t.me/Slava_ff</span>
+                  </a>
+                  <a href="mailto:sviatoslavfv@gmail.com" target="_blank" class="contacLink margin">
+                      <img src="src/landing/logo-gmail.svg" alt="gmail-logo" class="contactsLogo">
+                      <span class="mail_info">sviatoslavfv@gmail.com</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+        </section>
+        <section id="leftSide">
+          <div class="leftBlock" id="tools">
+              <button class="btn" id="pen" title="Pen"><img src="src/icons/tool-pen.png" alt="tool-pen.png"></button>
+              <button class="btn" id="paintcanvas" title="Paint canvas"><img src="src/icons/tool-paintcanvas.png" alt="tool-paintcanvas.png"></button>
+              <button class="btn" id="stroke" title="Stroke"><img src="src/icons/tool-stroke.png" alt="tool-stroke.png"></button>
+              <button class="btn" id="colorswap" title="Colorswap"><img src="src/icons/tool-colorswap.png" alt="tool-colorswap.png"></button>
+              <button class="btn" id="rectangle" title="Rectangle"><img src="src/icons/tool-rectangle.png" alt="tool-rectangle.png"></button>
+              <button class="btn" id="rainbow" title="Rainbow"><img src="src/icons/tool-rainbow.png" alt="tool-rainbow.png"></button>
+              <button class="btn" id="eraser" title="Eraser"><img src="src/icons/tool-eraser.png" alt="tool-eraser.png"></button>
+              <button class="btn" id="lighter" title="Lighten"><img src="src/icons/tool-lighter.png" alt="tool-lighter.png"></button>
+              <button class="btn" id="colorpicker" title="Colorpicker"><img src="src/icons/tool-colorpicker.png" alt="tool-colorpicker.png"></button>
+          </div>
+          <div class="leftBlock" id="colors">
+            <div>
+              <input type="color" class="colorChoose" id="secondaryColor" value="#9555af">
+              <input type="color" class="colorChoose" id="primaryColor" value="#ff0000">
+              <button class="btn" id="swapColors"><img src="src/icons/swapcolors.png" alt="swapcolors.png"></button>
+            </div>
+          </div>
+        </section>
+        <section id="frames">
+            <div class="frameBox">
+                <button class="copy"><img class="copyImg" src="src/icons/frame-copy.png" alt="frame-copy.png"></button>
+                <button class="del hide"><img class="delImg" src="src/icons/frame-del.png" alt="frame-del.png"></button>
+                <div class="frameNumber"></div>
+                <canvas class="frame" width="32" height="32"></canvas>
+            </div>
+            <div id="newFrame"><button id="addFrame">Add frame</button></div>
+        </section>
+        <section id="paintArea">
+          <canvas id="canvasToPaint" width="32" height="32"></canvas>
+          <canvas id="canvasToCursor" width="32" height="32"></canvas>
+        </section>
+        <section id="animation">
+            <div class="middleBlock" id="preview">
+                <div class="cnvPrv" width="200" height="200">
+                  <canvas id="canvasPreview" width="32" height="32"></canvas>
+                </div>
+                <div class="range">
+                    <div id="speedRangeValue">13 FPS</div>
+                    <input type="range" id="speedRange" name="fps" min="1" max="24">
+                </div>
+                <button id="fullscreen">Fullscreen</button>
+                <div id="tranform">
+                  <div id="tranformText">Trasform</div>
+                  <button class="btn" id="fliphorizontal"><img src="src/icons/tool-fliphorizontal.png" alt="tool-fliphorizontal.png"></button>
+                  <button class="btn" id="flipvertical"><img src="src/icons/tool-flipvertical.png" alt="tool-flipvertical.png"></button>
+                  <button class="btn" id="rotateleft"><img src="src/icons/tool-rotateleft.png" alt="tool-rotateleft.png"></button>
+                  <button class="btn" id="rotateright"><img src="src/icons/tool-rotateright.png" alt="tool-rotateright.png"></button>
+                </div>
+                <select id="size">
+                  <option value="32">32*32</option>
+                  <option value="64">64*64</option>
+                  <option value="128">128*128</option>
+                  <option value="256">256*256</option>
+                  <option value="512">512*512</option>
+                </select>
+                <button id="exportApng">Export as <b>.apng</b></button>
+                <button id="exportGif">Export as <b>.gif</b></button>
+                <button id="apngToGDriveWait">Log In to upload to Google Drive</button>
+                <button id="apngToGDrive">To Google Drive as <b>.apng</b></button>
+                <!-- <button id="gifToGDriveWait">Log In to upload to Google Drive</button>
+                <button id="gifToGDrive">To Google Drive as <b>.gif</b></button> -->
+                <div>
+                  <div id="cursorCoords"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer"></footer>
+    <script src="src/index.js"></script>
+<script type="text/javascript" src="app.bundle.js"></script></body>
+</html>
